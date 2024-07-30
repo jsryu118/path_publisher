@@ -1,0 +1,19 @@
+<launch>
+  <node name="path_publisher_service" pkg="path_publisher" type="path_publisher_service.py" output="screen">
+    <param name="filename1" value="$(find path_publisher)/path/111.txt" />
+    <param name="topic_name1" value="/path1" />
+    <param name="filename2" value="$(find path_publisher)/path/222.txt" />
+    <param name="topic_name2" value="/path2" />
+    <param name="filename3" value="$(find path_publisher)/path/333.txt" />
+    <param name="topic_name3" value="/path3" />
+    <param name="frame_id" value="map_gnss" />
+  </node>
+
+  <node name="path_publisher_client" pkg="path_publisher" type="path_publisher_client.py" output="screen">
+    <!-- No parameters needed for the client -->
+  </node>
+
+  <node pkg="rviz" type="rviz" name="rviz" output="screen" 
+    args="-d $(find path_publisher)/rviz/default.rviz" required="true">
+  </node>
+</launch>
